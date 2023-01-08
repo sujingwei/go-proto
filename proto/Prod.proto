@@ -1,0 +1,20 @@
+// 调用命令如下：
+// 1. protoc --go-grpc_out=require_unimplemented_servers=false:./ Prod.proto
+// 2. protoc --go_out=./ Prod.proto
+
+syntax = "proto3";
+
+// 指定生成的包名：<路径:包字>，可以不使用包名
+option go_package = '../service';
+package service;
+
+message ProdRequest {
+    int32 prod_id = 1;
+}
+message ProdResponse {
+    int32 prod_stock = 1;
+}
+
+service ProdService {
+    rpc GetProductStock(ProdRequest) returns (ProdResponse);
+}
