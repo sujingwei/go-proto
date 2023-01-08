@@ -1,0 +1,16 @@
+// 调用命令如下：
+// 1. protoc --go-grpc_out=require_unimplemented_servers=false:./ User.proto
+// 2. protoc --go_out=./ User.proto
+
+syntax = "proto3";
+
+// 指定生成的包名：<路径:包字>，可以不使用包名
+option go_package = '../service';
+package service;
+
+message User {
+    string username = 1;
+    int32 age = 2;
+    optional string password = 3;
+    repeated string addresses = 4;
+}
